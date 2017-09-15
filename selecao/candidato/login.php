@@ -51,8 +51,6 @@ require_once '../funcoes/funcoes.php';
                                 <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
                             </div>
 
-
-
                             <div class="input-group">
                                 <div class="checkbox">
                                     <label>
@@ -116,7 +114,7 @@ require_once '../funcoes/funcoes.php';
                                 </div>
                             </div>
 
-                            
+
                             <div class="form-group">
                                 <label for="username" class="col-md-3 control-label">Usernme</label>
                                 <div class="col-md-9">
