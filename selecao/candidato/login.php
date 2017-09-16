@@ -38,8 +38,13 @@ require_once '../funcoes/funcoes.php';
                     <div style="padding-top:30px" class="panel-body" >
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-
-                        <form id="loginform" class="form-horizontal" role="form">
+                        <?php
+                        if (isset($_GET['mensagem'])) {
+                            $mensagem = unserialize($_GET['mensagem']);
+                            echo $mensagem;
+                        }
+                        ?>
+                        <form id="loginform" class="form-horizontal" role="form" method="post" action="<?php echo site ?>/candidato/login.php?f=login">
 
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -64,7 +69,8 @@ require_once '../funcoes/funcoes.php';
                                 <!-- Button -->
 
                                 <div class="col-sm-12 controls">
-                                    <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                                    <!-- Change this to a button or input when using this as a form -->
+                                    <button type="submit"class="btn btn-lg btn-success btn-block">Login</button>
                                 </div>
                             </div>
 
