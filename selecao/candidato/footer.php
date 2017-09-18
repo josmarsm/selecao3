@@ -18,20 +18,8 @@
 <script src="<?php echo site ?>/includes/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo site ?>/includes/datatables-responsive/dataTables.responsive.js"></script>
 
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
-    $(document).ready(function () {
-        $('#dataTables-example').DataTable({
-            "aLengthMenu": [[5, 25, 50, 75, -1], [5, 25, 50, 75, "All"]],
-            "iDisplayLength": 5,
-            "order": [],
-            "columnDefs": [{
-                    "targets": 'no-sort',
-                    "orderable": false,
-                }]
 
-        });
-    });
-</script>
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+
 </body>
 </html>

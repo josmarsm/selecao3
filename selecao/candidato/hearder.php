@@ -17,18 +17,49 @@
         <link href="<?php echo site ?>/includes/morrisjs/morris.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="<?php echo site ?>/includes/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript">
 
+            // checa se o documento foi carregado
+            $(document).ready(function () {
+                $("#ano_poscomp").attr('disabled', 'disabled');
+                $("#ano_poscomp").hide();
+                $("#nota_poscomp").attr('disabled', 'disabled');
+                $("#nota_poscomp").hide();
+
+                //To enable
+                $("#poscomp_sim").click(function () {
+
+                    $("#ano_poscomp").removeAttr('disabled');
+                    $("#ano_poscomp").show();
+                    $("#nota_poscomp").removeAttr('disabled');
+                    $("#nota_poscomp").show();
+                    $("p").show();
+                });
+                //To disable
+                $("#poscomp_nao").click(function () {
+
+                    $("#ano_poscomp").attr('disabled', 'disabled');
+                    $("#ano_poscomp").hide();
+                    $("#nota_poscomp").attr('disabled', 'disabled');
+                    $("#nota_poscomp").hide();
+                    $("p").hide();
+
+                });
+            });
+        </script>
     </head>
     <style>
         #error-msg{ display:none }
         #success-msg{ display:none }
-        
+
     </style>
     <body>
 
@@ -49,8 +80,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<?php echo site ?>/candidato/?p=home">Home</a></li>
-                    <li><a href="<?php echo site .'/candidato/?p=identificacao&?id='.$_SESSION['id_usuario'];?>">Formulário de Identificação</a></li>
-                    <li><a href="<?php echo site .'/candidato/?p=upload&id='.$_SESSION['id_usuario'];?>">Upload de Documentos</a></li>                   
+                    <li><a href="<?php echo site . '/candidato/?p=identificacao&?id=' . $_SESSION['id_usuario']; ?>">Formulário de Identificação</a></li>
+                    <li><a href="<?php echo site . '/candidato/?p=upload&id=' . $_SESSION['id_usuario']; ?>">Upload de Documentos</a></li>                   
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
                         <ul class="dropdown-menu">

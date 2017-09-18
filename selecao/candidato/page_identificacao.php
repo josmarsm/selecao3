@@ -137,30 +137,48 @@ $usuario = get_data($sql, $vars);
 
                         <div class="form-group">
                             <!-- Multiple Radios (inline) -->
-                            <label class="col-md-2 control-label" for="radios">Utilizar POSCOMP? <h11>*</h11></label>
+                            <label class="col-md-2 control-label" for="poscomp">Utilizar POSCOMP? <h11>*</h11></label>
                             <div class="col-md-4"> 
-                                <label required="" class="radio-inline" for="radios-0" >
-                                    <input name="sexo" id="sexo" value="feminino" type="radio" required>
-                                    Feminino
+                                <label class="radio-inline" for="radios-0" >
+                                    <input type="radio" name="poscomp" id="poscomp_sim" value="Sim">
+                                    Sim
                                 </label> 
                                 <label class="radio-inline" for="radios-1">
-                                    <input name="sexo" id="sexo" value="masculino" type="radio">
-                                    Masculino
+                                    <input type="radio" name="poscomp" id="poscomp_nao" value="Nao">
+                                    Nao
                                 </label>
                             </div>
+                            <div class="col-sm-3" id="ano_poscomp">
+                                <div class="input-group mb-2 mb-sm-0" hidden disable>
+                                    <div class="input-group-addon">Ano Poscomp</div>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-3" id="nota_poscomp" hidden disable>
+                                <div class="input-group mb-2 mb-sm-0">
+                                    <div class="input-group-addon">Nota Poscomp</div>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>                                                      
                         </div>
+
+
+
+
+
+
 
                         <div class="form-group">
                             <!-- Multiple Radios (inline) -->
-                            <label class="col-md-2 control-label" for="radios">Bolsa? <h11>*</h11></label>
+                            <label class="col-md-2 control-label" for="bolsa">Bolsa? <h11>*</h11></label>
                             <div class="col-md-4"> 
                                 <label required="" class="radio-inline" for="radios-0" >
-                                    <input name="sexo" id="sexo" value="feminino" type="radio" required>
-                                    Feminino
+                                    <input name="bolsa" id="sim" value="Sim" type="radio" required>
+                                    Sim
                                 </label> 
                                 <label class="radio-inline" for="radios-1">
-                                    <input name="sexo" id="sexo" value="masculino" type="radio">
-                                    Masculino
+                                    <input name="bolsa" id="nao" value="Não" type="radio">
+                                    Não
                                 </label>
                             </div>
                         </div>
