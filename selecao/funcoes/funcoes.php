@@ -384,21 +384,22 @@ function add_identificacao() {
 
     $mensagem .= 'Poscomp: ' . $poscomp . $complemento_poscomp . '<br>';
     $mensagem .= 'Bolsa: ' . $bolsa . '<br>';
-
-    enviar_email($email_to, $assunto, $mensagem);
+    
     $header = site . '/candidato/?p=identificacao&?id=' . $id_usuario;
     
     header('Location: ' . $header);
+    
+    enviar_email($email_to, $assunto, $mensagem);
 }
 
 function enviar_email($email_to, $assunto, $mensagem) {
 
     require_once("class.phpmailer.php");
     require_once("class.smtp.php");
-    $de = 'josmar@inf.ufsm.br';
-    $de_nome = 'Josmar Nuernberg';
-    $username = 'josmar@inf.ufsm.br';
-    $password = 'Ramsoj@123';
+    $de = 'pgcc@ufsm.br';
+    $de_nome = 'Programa de Pós-Graduação em Ciência da Computação';
+    $username = 'pgcc@ufsm.br';
+    $password = 'pgccSHA256';
 
 
     try {
@@ -416,7 +417,7 @@ function enviar_email($email_to, $assunto, $mensagem) {
         $mail->Username = $username; // Usuário do servidor SMTP (endereço de email)
         $mail->Password = $password; // Senha do servidor SMTP (senha do email usado)
 
-        $mail->SetFrom($de, $de_nome);
+        $mail->SetFrom($de_nome, $de );
 
         $mail->Subject = $assunto;
 

@@ -2,29 +2,39 @@
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+
 $vars = [$id];
-$sql = "SELECT * FROM candidato WHERE id_candidato =?";
-$candidato = get_data($sql, $vars);
-//var_dump($candidato);
+//var_dump($vars);
+$sql_identificacao = "SELECT * FROM identificacao WHERE id_usuario =?";
+$identificacao = get_data($sql_identificacao, $vars);
+//var_dump($identificacao);
 ?>
 
-<div class="wrapper" role="main">
-    <div class="container">
-        <div class="row">
-            <div class="panel panel-default">
-                <?php
-                if (isset($_GET['mensagem'])) {
-                    $mensagem = unserialize($_GET['mensagem']);
-                    echo $mensagem;
-                }
-                ?>
-            </div>
-        </div>                 
-        <div class="row">
-            <div class="panel panel-default">
+<div class="container">
+    <div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <!-- começa aqui o conteúdo de cada página -->
+        <fieldset>
+            <div class="panel panel-primary">
                 <div class="panel-heading">
+
                     <?php
-                    echo '<b>' . utf8_encode($candidato[0]['nome']) . '</b> - Envio de Documentos';
+                    $id_aplicacao = 2;
+                    echo 'Formulário de Upload de Documentos [<b> ' . $_SESSION['nome'] . '</b> ]';
+                    $status_aplicacao = status_aplicacao($id_aplicacao);
+
+                    if ($status_aplicacao[0] == 'ativada') {
+                        echo ' Edição Ativa';
+//echo '<button type="button" id="Editar" name="Editar" class="btn btn-success" data-toggle="modal" data-target="#myedit">Editar</button>';
+                    } else {
+                        echo utf8_encode($status_aplicacao[1]) . '<br>';
+                    }
+
+
+
+                    //}
                     ?>
                 </div>
                 <!-- /.panel-heading -->
@@ -77,6 +87,7 @@ $candidato = get_data($sql, $vars);
                                     </tbody>
                                 </table>
                                 <p>
+                                    <button type="button" class="btn btn-small btn-success" data-toggle="modal" data-target="#myModal">Upload de Documentos</button>
                                     <a class="btn btn-small btn-success" ng-click="$flow.resume()">Upload</a>
                                     <a class="btn btn-small btn-danger" ng-click="$flow.pause()">Pause</a>
                                     <a class="btn btn-small btn-info" ng-click="$flow.cancel()">Cancel</a>
@@ -121,6 +132,7 @@ $candidato = get_data($sql, $vars);
                                     </tbody>
                                 </table>
                                 <p>
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
                                     <a class="btn btn-small btn-success" ng-click="$flow.resume()">Upload</a>
                                     <a class="btn btn-small btn-danger" ng-click="$flow.pause()">Pause</a>
                                     <a class="btn btn-small btn-info" ng-click="$flow.cancel()">Cancel</a>
@@ -128,7 +140,7 @@ $candidato = get_data($sql, $vars);
                                 </p>
                             </div>
                         </div>
-                        
+
                         <div class="tab-pane fade" id="publicacao-pills">                            
                             <div class="panel-body">
                                 <h4>Publicação na área de computação (máximo 4,0)</h4> 
@@ -165,6 +177,7 @@ $candidato = get_data($sql, $vars);
                                     </tbody>
                                 </table>
                                 <p>
+                                    <button type="button" class="btn btn-small btn-success" data-toggle="modal" data-target="#myModal">Open Modal</button>
                                     <a class="btn btn-small btn-success" ng-click="$flow.resume()">Upload</a>
                                     <a class="btn btn-small btn-danger" ng-click="$flow.pause()">Pause</a>
                                     <a class="btn btn-small btn-info" ng-click="$flow.cancel()">Cancel</a>
@@ -172,12 +185,37 @@ $candidato = get_data($sql, $vars);
                                 </p>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
-        </div>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Some text in the modal.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </fieldset>
     </div>
+    <!-- termina aqui o conteúdo de cada página-->    
+    <!-- /.panel -->
+    <!-- /.col-lg-12 -->
 </div>

@@ -43,22 +43,16 @@ if (isset($_GET['f'])) {
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <?php
-                            echo $titulo_acao . 'Formulário de Identificação [<b> ' . $_SESSION['nome'] . '</b> ]';
-                            
+                            $id_aplicacao = 1;
+                            echo $titulo_acao.'Formulário de Identificação [<b> ' . $_SESSION['nome'] . '</b> ]';
+                            $aplicacao = 'Edição de Identificação';
+                            $status_aplicacao = status_aplicacao($id_aplicacao);
 
-                            $status_aplicacao = status_aplicacao(1);
-                            //print_r($satuts_aplicacao);
-                            //echo 'Status ' . $satuts_aplicacao[0] . '<br>';
-                            
-                            if ($status_aplicacao[0] == 'ativada') {                                
+                            if ($status_aplicacao[0] == 'ativada') {
                                 echo ' <button type="button" id="Editar" name="Editar" class="btn btn-success" data-toggle="modal" data-target="#myedit">Editar</button>';
-                            } else {                                
+                            } else {
                                 echo utf8_encode($status_aplicacao[1]) . '<br>';
                             }
-
-                            
-
-                            //}
                             ?>
 
                         </div>
@@ -391,7 +385,10 @@ if (isset($_GET['f'])) {
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="Cadastrar"></label>
                                 <div class="col-md-8">
-                                    <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit" onclick="waitingDialog.show('Informações sendo processadas');setTimeout(function () {waitingDialog.hide();}, 3000);">Cadastrar</button>
+                                    <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit" onclick="waitingDialog.show('Informações sendo processadas');
+                                            setTimeout(function () {
+                                                waitingDialog.hide();
+                                            }, 4000);">Cadastrar</button>
                                     <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
                                 </div>
                             </div>

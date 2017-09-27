@@ -35,8 +35,6 @@
             // checa se o documento foi carregado
             $(document).ready(function () {
                 desabilita_campos();
-               
-                
                 //To enable
                 $("#poscomp_sim").click(function () {
                     habilita_campos();
@@ -44,6 +42,18 @@
                 //To disable
                 $("#poscomp_nao").click(function () {
                     desabilita_campos();
+                });
+
+
+
+                //$(".nav li").on("click", function () {
+                  //  $(".nav li").removeClass("active");
+                    //$(this).addClass("active");
+                //});
+
+                $(".nav li").on("click", function () {
+                    $(".nav li").find(".active").removeClass("active");
+                    $(this).parent().addClass("active");
                 });
 
             });
@@ -92,6 +102,9 @@
                     <li class="active"><a href="<?php echo site ?>/candidato/?p=home">Home</a></li>
                     <li><a href="<?php echo site . '/candidato/?p=identificacao&?id=' . $_SESSION['id_usuario']; ?>">Formulário de Identificação</a></li>
                     <li><a href="<?php echo site . '/candidato/?p=curriculo&id=' . $_SESSION['id_usuario']; ?>">Envio do Currículo</a></li>                   
+                    <?php 
+                    if ($_SESSION['id_usuario'] =='1')
+                    {?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -102,7 +115,8 @@
                             <li><a href="#">Aprovados - Por linha des pesquisa</a></li>
                             <li><a href="#">Aprovados - Por Classificação</a></li>                                
                         </ul>
-                    </li>                        
+                    </li>
+                    <?php } ?>
                 </ul>
 
                 <form class="navbar-form navbar-right" role="search">
