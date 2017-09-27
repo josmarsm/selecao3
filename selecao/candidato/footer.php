@@ -17,6 +17,8 @@
 <script src="<?php echo site ?>/includes/datatables/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo site ?>/includes/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo site ?>/includes/datatables-responsive/dataTables.responsive.js"></script>
+<script src="<?php echo site ?>/includes/selecao/selecao.js"></script>
+<script src="<?php echo site ?>/includes/build/bootstrap-waitingfor.js"></script>
 
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->

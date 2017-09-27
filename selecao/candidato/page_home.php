@@ -1,3 +1,6 @@
+<?php
+verifica();
+?>
 <div class="wrapper" role="main">
     <div class="container">
         <div class="row">

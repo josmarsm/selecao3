@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ptb">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
+        <?php
+        //header('Content-Type: text/html; charset=ISO-8859-1', true);
+        setlocale(LC_TIME, 'ptb');
+        ?>
         <title><?php echo gera_titulos(); ?></title>
         <!-- Bootstrap Core CSS -->
         <link href="<?php echo site ?>/includes/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +21,7 @@
         <link href="<?php echo site ?>/includes/morrisjs/morris.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="<?php echo site ?>/includes/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo site ?>/includes/selecao/selecao.css" rel="stylesheet" type="text/css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,31 +34,36 @@
 
             // checa se o documento foi carregado
             $(document).ready(function () {
-                $("#ano_poscomp").attr('disabled', 'disabled');
-                $("#ano_poscomp").hide();
-                $("#nota_poscomp").attr('disabled', 'disabled');
-                $("#nota_poscomp").hide();
-
+                desabilita_campos();
+               
+                
                 //To enable
                 $("#poscomp_sim").click(function () {
-
-                    $("#ano_poscomp").removeAttr('disabled');
-                    $("#ano_poscomp").show();
-                    $("#nota_poscomp").removeAttr('disabled');
-                    $("#nota_poscomp").show();
-                    $("p").show();
+                    habilita_campos();
                 });
                 //To disable
                 $("#poscomp_nao").click(function () {
-
-                    $("#ano_poscomp").attr('disabled', 'disabled');
-                    $("#ano_poscomp").hide();
-                    $("#nota_poscomp").attr('disabled', 'disabled');
-                    $("#nota_poscomp").hide();
-                    $("p").hide();
-
+                    desabilita_campos();
                 });
+
             });
+
+
+            function desabilita_campos() {
+                $("#poscomp_complemento").attr('disabled', 'disabled');
+                $("#poscomp_complemento").hide();
+            }
+
+            function habilita_campos() {
+                $("#poscomp_complemento").removeAttr('disabled');
+                $("#poscomp_complemento").show();
+            }
+            function inicio() {
+                desabilita_campos();
+            }
+
+
+
         </script>
     </head>
     <style>
@@ -81,7 +91,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<?php echo site ?>/candidato/?p=home">Home</a></li>
                     <li><a href="<?php echo site . '/candidato/?p=identificacao&?id=' . $_SESSION['id_usuario']; ?>">Formulário de Identificação</a></li>
-                    <li><a href="<?php echo site . '/candidato/?p=upload&id=' . $_SESSION['id_usuario']; ?>">Upload de Documentos</a></li>                   
+                    <li><a href="<?php echo site . '/candidato/?p=curriculo&id=' . $_SESSION['id_usuario']; ?>">Envio do Currículo</a></li>                   
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
                         <ul class="dropdown-menu">
