@@ -10,6 +10,7 @@ error_reporting(E_ALL | E_STRICT); // Exclusivamente PHP 5.3.x
 include 'config.php';
 
 $server = $_SERVER['SERVER_NAME'];
+//echo $server;
 //Se a variavel $server retornar localhost
 if ($server == "localhost")
     $url = "http://localhost/selecao";
@@ -19,6 +20,7 @@ else
 //echo $url;
 
 define('site', $url);
+define('usuario_id','1');
 
 $error = array();
 $resp = array();
@@ -170,7 +172,8 @@ function logout() {
     $resp['status'] = true;
     $resp['msg'] = "Logout realizado com sucesso!";
     echo json_encode($resp);
-    header("Location:index.php", 10);
+    $site = site;
+    header("Location:$site", 10);
     exit;
 //Caso o usuário não estejand autenticado, limpa os dados e redireciona
     if (!isset($_SESSION['username']) and ! isset($_SESSION['password'])) {
@@ -244,6 +247,8 @@ function login() {
             $_SESSION["perfil"] = stripslashes($data[0]['perfil']);
             $_SESSION["status"] = stripslashes($data[0]['status']);
             $_SESSION["ultimo_acesso"] = stripslashes($data[0]['ultimo_acesso']);
+
+            
 
             $resp['status'] = true;
             $resp['msg'] = "Login realizado com sucesso!";
@@ -384,11 +389,11 @@ function add_identificacao() {
 
     $mensagem .= 'Poscomp: ' . $poscomp . $complemento_poscomp . '<br>';
     $mensagem .= 'Bolsa: ' . $bolsa . '<br>';
-    
+
     $header = site . '/candidato/?p=identificacao&?id=' . $id_usuario;
-    
+
     header('Location: ' . $header);
-    
+
     enviar_email($email_to, $assunto, $mensagem);
 }
 
@@ -417,7 +422,7 @@ function enviar_email($email_to, $assunto, $mensagem) {
         $mail->Username = $username; // Usuário do servidor SMTP (endereço de email)
         $mail->Password = $password; // Senha do servidor SMTP (senha do email usado)
 
-        $mail->SetFrom($de_nome, $de );
+        $mail->SetFrom($de_nome, $de);
 
         $mail->Subject = $assunto;
 
@@ -505,7 +510,7 @@ function status_aplicacao($codigo_aplicacao) {
 
     $diferenca_inicio = $habilitacao_inicio->diff($DataAtual);
     $diferenca_fim = $DataAtual->diff($habilitacao_fim);
-    
+
     //print_r($diferenca_inicio);
     //echo '<br>';
     //print_r($diferenca_fim);

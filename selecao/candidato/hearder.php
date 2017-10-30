@@ -29,11 +29,13 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script type="text/javascript">
 
             // checa se o documento foi carregado
             $(document).ready(function () {
+                
                 desabilita_campos();
                 //To enable
                 $("#poscomp_sim").click(function () {
@@ -47,14 +49,15 @@
 
 
                 //$(".nav li").on("click", function () {
-                  //  $(".nav li").removeClass("active");
-                    //$(this).addClass("active");
+                //  $(".nav li").removeClass("active");
+                //$(this).addClass("active");
                 //});
 
-                $(".nav li").on("click", function () {
-                    $(".nav li").find(".active").removeClass("active");
-                    $(this).parent().addClass("active");
+                $('ul.nav.nav-tabs > li > a').click(function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
                 });
+
 
             });
 
@@ -100,23 +103,41 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<?php echo site ?>/candidato/?p=home">Home</a></li>
+                    
+                        <?php
+                    if ($_SESSION['id_usuario'] == '1') {
+                        ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Candidatos</a></li>
+                                <li><a href="#">Lista de Candidatos - Não avaliados</a></li>
+                                <li><a href="#">Aprovados</a></li>
+                                <li><a href="#">Aprovados - Por orientador</a></li>
+                                <li><a href="#">Aprovados - Por linha des pesquisa</a></li>
+                                <li><a href="#">Aprovados - Por Classificação</a></li>                                
+                            </ul>
+                        </li>
+                    <?php } ?>
+                        
                     <li><a href="<?php echo site . '/candidato/?p=identificacao&?id=' . $_SESSION['id_usuario']; ?>">Formulário de Identificação</a></li>
                     <li><a href="<?php echo site . '/candidato/?p=curriculo&id=' . $_SESSION['id_usuario']; ?>">Envio do Currículo</a></li>                   
-                    <?php 
-                    if ($_SESSION['id_usuario'] =='1')
-                    {?>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Lista de Candidatos</a></li>
-                            <li><a href="#">Lista de Candidatos - Não avaliados</a></li>
-                            <li><a href="#">Aprovados</a></li>
-                            <li><a href="#">Aprovados - Por orientador</a></li>
-                            <li><a href="#">Aprovados - Por linha des pesquisa</a></li>
-                            <li><a href="#">Aprovados - Por Classificação</a></li>                                
-                        </ul>
-                    </li>
+                    <?php
+                    if ($_SESSION['id_usuario'] == '1') {
+                        ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Lista de Candidatos</a></li>
+                                <li><a href="#">Lista de Candidatos - Não avaliados</a></li>
+                                <li><a href="#">Aprovados</a></li>
+                                <li><a href="#">Aprovados - Por orientador</a></li>
+                                <li><a href="#">Aprovados - Por linha des pesquisa</a></li>
+                                <li><a href="#">Aprovados - Por Classificação</a></li>                                
+                            </ul>
+                        </li>
                     <?php } ?>
+                        
                 </ul>
 
                 <form class="navbar-form navbar-right" role="search">

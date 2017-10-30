@@ -7,11 +7,11 @@
 <script src="<?php echo site ?>/includes/metisMenu/metisMenu.min.js"></script>
 <!-- Morris Charts JavaScript -->
 <script src="<?php echo site ?>/includes/raphael/raphael.min.js"></script>
-<script src="<?php echo site ?>/includes/morrisjs/morris.min.js"></script>
-<script src="<?php echo site ?>/includes/data/morris-data.js"></script>
+
+
 <!-- Custom Theme JavaScript -->
 <script src="<?php echo site ?>/includes/dist/js/sb-admin-2.js"></script>
-<script src="<?php echo site ?>/includes/dist/js/selecao.js"></script>
+
 
 <!-- DataTables JavaScript -->
 <script src="<?php echo site ?>/includes/datatables/js/jquery.dataTables.min.js"></script>
